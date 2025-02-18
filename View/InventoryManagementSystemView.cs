@@ -12,7 +12,7 @@ namespace Inventory_Management_System.View
     public class InventoryManagementSystemView
     {
         private readonly IInventoryManager _inventoryManager;
-        private readonly ViewHelper _viewHelper;
+        private readonly ViewHelper _viewHelper; //a class that has the helperview
 
 
         public InventoryManagementSystemView(IInventoryManager inventoryManager)

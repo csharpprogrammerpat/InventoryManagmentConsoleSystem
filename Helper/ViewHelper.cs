@@ -75,7 +75,7 @@ namespace Inventory_Management_System.Helper
             }
         }
 
-        public void DisplayTotalInventoryValue()
+        public void DisplayTotalInventoryValue() // displays total inventory value
         {
             Console.WriteLine("");
             _action = "Display Total Value";
@@ -84,7 +84,7 @@ namespace Inventory_Management_System.Helper
             while (viewAgain)
             {
                 Console.WriteLine("");
-                _inventoryManager.GetTotalValue(); // Display the list of products
+                _inventoryManager.GetTotalValue(); 
                 viewAgain = AskToContinue(_action); // Ask user if they want to view again
             }
         }
@@ -94,7 +94,7 @@ namespace Inventory_Management_System.Helper
             Console.WriteLine("Enter product name (type 'cancel' to exit): ");
             string name = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(name) || name.ToLower() == "cancel")
+            if (string.IsNullOrWhiteSpace(name) || name.ToLower() == "cancel") //checks if the inputed value is null or whitespace only or the word cancel
             {
                 Console.WriteLine("Product entry canceled.");
                 return null; // Return null to indicate cancellation
@@ -115,39 +115,39 @@ namespace Inventory_Management_System.Helper
             return new Product(name, quantity, price);
         }
 
-        private int GetProductId()
+        private int GetProductId() //a helper to get product id value and check if correct value
         {
             Console.WriteLine("");
             Console.WriteLine("Enter product Id (or type 'cancel' to exit): ");
             string productId = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(productId) || productId.ToLower() == "cancel")
+            if (string.IsNullOrWhiteSpace(productId) || productId.ToLower() == "cancel") //checks if the inputed value is null or whitespace only or the word cancel
             {
                 Console.WriteLine("Product entry canceled.");
                 return -1; // Return an invalid value (-1) to indicate cancellation or error
             }
 
-            if (!int.TryParse(productId, out int quantity))
+            if (!int.TryParse(productId, out int id)) //cast product ID to int if false returns -1
             {
                 Console.WriteLine("Invalid quantity. Operation canceled.");
                 return -1; // Return -1 to indicate invalid input
             }
 
-            return quantity;
+            return id;
         }
 
 
-        private double GetPrice()
+        private double GetPrice()//a helper to get price value and check if correct value
         {
             Console.WriteLine("");
             Console.WriteLine("Enter product price (or type 'cancel' to exit): ");
             string priceInput = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(priceInput) || priceInput.ToLower() == "cancel")
+            if (string.IsNullOrWhiteSpace(priceInput) || priceInput.ToLower() == "cancel") //checks if the inputed value is null or whitespace only or the word cancel
             {
                 Console.WriteLine("Product entry canceled.");
                 return -1; // Return an invalid value (-1) to indicate cancellation or error
             }
 
-            if (!double.TryParse(priceInput, out double price))
+            if (!double.TryParse(priceInput, out double price)) //cast priceInput to double if false returns -1
             {
                 Console.WriteLine("Invalid price. Operation canceled.");
                 return -1; // Return -1 to indicate invalid input
@@ -156,12 +156,12 @@ namespace Inventory_Management_System.Helper
             return price;
         }
 
-        private int GetQuantity()
+        private int GetQuantity() //a helper to get quantity value and check if correct value
         {
             Console.WriteLine("");
             Console.WriteLine("Enter product quantity (or type 'cancel' to exit): ");
             string quantityInput = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(quantityInput) || quantityInput.ToLower() == "cancel")
+            if (string.IsNullOrWhiteSpace(quantityInput) || quantityInput.ToLower() == "cancel") //checks if the inputed value is null or whitespace only or the word cancel
             {
                 Console.WriteLine("Product entry canceled.");
                 return -1; // Return an invalid value (-1) to indicate cancellation or error
@@ -178,7 +178,7 @@ namespace Inventory_Management_System.Helper
 
 
 
-        public void RemoveProduct()
+        public void RemoveProduct() //deletes a product
         {
             Console.WriteLine("");
             _action = "Remove product";
@@ -209,7 +209,7 @@ namespace Inventory_Management_System.Helper
             }
         }
 
-        public void DisplayProducts()
+        public void DisplayProducts() // Display the list of products
         {
             Console.WriteLine("");
             _action = "View products";
@@ -217,14 +217,14 @@ namespace Inventory_Management_System.Helper
 
             while (viewAgain)
             {
-                _inventoryManager.ListProducts(); // Display the list of products
-                viewAgain = AskToContinue(_action); // Ask user if they want to view again
+                _inventoryManager.ListProducts(); 
+                viewAgain = AskToContinue(_action); // Ask user if they want to do the action again
             }
         }
-        public bool AskToContinue(string action)
+        public bool AskToContinue(string action)//method where it asks user to perform the current action
         {
             Console.WriteLine("");
-            Console.WriteLine($"Do you want to perform \"{action}\" again? Y | N");
+            Console.WriteLine($"Do you want to perform \"{action}\" again? Y | N"); //asking user if they want to perform the current action.
             string userInput = Console.ReadLine()?.Trim().ToUpper(); // Read and trim input
 
             if (string.IsNullOrEmpty(userInput))
@@ -232,10 +232,10 @@ namespace Inventory_Management_System.Helper
                 return false;
             }
 
-            return userInput == "Y";
+            return userInput == "Y"; //return if userInput is Y then it returns true.
         }
 
-        public bool ContinueDeletion(int productId)
+        public bool ContinueDeletion(int productId) //a method to check if user is sure to delete the product.
         {
             Product product = _inventoryManager.GetProductById(productId);
             if (product == null)
@@ -250,10 +250,10 @@ namespace Inventory_Management_System.Helper
             {
                 return false;
             }
-            return userInput == "Y";
+            return userInput == "Y"; //return if userInput is Y then it returns true.
         }
 
-        public bool ContinueUpdate(int productId, int newQuantity)
+        public bool ContinueUpdate(int productId, int newQuantity)//a method to check if user is sure to update the product.
         {
             Product product = _inventoryManager.GetProductById(productId);
             if (product == null)
@@ -268,7 +268,7 @@ namespace Inventory_Management_System.Helper
             {
                 return false;
             }
-            return userInput == "Y";
+            return userInput == "Y"; //return if userInput is Y then it returns true.
         }
     }
 }

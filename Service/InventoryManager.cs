@@ -19,20 +19,20 @@ namespace Inventory_Management_System.Manager
         }
 
 
-        public void AddProduct(Product product)
+        public void AddProduct(Product product) //adds a product to a list.
         {
 
 
             try
             {
-                string error = ValueChecker(product.Price, product.QuantityInStock, product.Name);
+                string error = ValueChecker(product.Price, product.QuantityInStock, product.Name); //checks if the argument product has incorrect values.
                 if (error != null)
                 {
                     Console.WriteLine(error);
                     return;
                 }
 
-                nextProductId = nextProductId + 1;
+                nextProductId = nextProductId + 1; //auto increment of product id
                 product.ProductId = nextProductId;
                 inventory.Add(product);
                 Console.WriteLine($"Product '{product.Name}' (ID: {product.ProductId} Price: {product.Price} Quantity: {product.QuantityInStock}) added successfully.");
@@ -45,7 +45,7 @@ namespace Inventory_Management_System.Manager
             }
         }
 
-        public Product GetProductById(int productId)
+        public Product GetProductById(int productId) //returns a product by id.
         {
            
             foreach (var product in inventory)
@@ -59,19 +59,19 @@ namespace Inventory_Management_System.Manager
             return null;
         }
 
-        public double GetTotalValue()
+        public double GetTotalValue() //returns total inventory value.
         {
             double totalValue = 0;
             foreach (var product in inventory)
             {
-                totalValue = product.Price * product.QuantityInStock;
+                totalValue += product.Price * product.QuantityInStock;
             }
             Console.WriteLine($"Total inventory value: Php {totalValue:F2}");
             return totalValue;
         }
 
       
-        public void ListProducts()
+        public void ListProducts() //displays a list of products.
         {
             if (!inventory.Any())
             {
@@ -99,7 +99,7 @@ namespace Inventory_Management_System.Manager
                     $"Php {product.Price:F2}");
             }
         }
-        public void RemoveProduct(int productId)
+        public void RemoveProduct(int productId) //remove product via id.
         {
             Product productToRemove = null;
             foreach (var product in inventory)
@@ -123,7 +123,7 @@ namespace Inventory_Management_System.Manager
             return;
         }
 
-        public void UpdateProduct(int productId, int newQuantity)
+        public void UpdateProduct(int productId, int newQuantity)  //update product via id with new quantity
         {
             Product productToEdit = null;
             foreach (var product in inventory)
@@ -146,7 +146,7 @@ namespace Inventory_Management_System.Manager
             return;
         }
 
-        private string ValueChecker(double price, int quantity, string name)
+        private string ValueChecker(double price, int quantity, string name) //method to check if values are correct returns a list of errors.
         {
             List<string> errors = new List<string>();
 
