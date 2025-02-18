@@ -1,0 +1,5 @@
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\publish\Inventory Management System.exe
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\publish\Inventory Management System.dll
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\publish\Inventory Management System.deps.json
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\publish\Inventory Management System.runtimeconfig.json
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\publish\Inventory Management System.pdb

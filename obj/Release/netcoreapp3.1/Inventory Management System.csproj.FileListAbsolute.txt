@@ -1,0 +1,13 @@
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\Inventory Management System.exe
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\Inventory Management System.deps.json
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\Inventory Management System.runtimeconfig.json
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\Inventory Management System.runtimeconfig.dev.json
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\Inventory Management System.dll
+C:\Users\Patrick\source\repos\Inventory Management System\bin\Release\netcoreapp3.1\Inventory Management System.pdb
+C:\Users\Patrick\source\repos\Inventory Management System\obj\Release\netcoreapp3.1\Inventory Management System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Patrick\source\repos\Inventory Management System\obj\Release\netcoreapp3.1\Inventory Management System.AssemblyInfoInputs.cache
+C:\Users\Patrick\source\repos\Inventory Management System\obj\Release\netcoreapp3.1\Inventory Management System.AssemblyInfo.cs
+C:\Users\Patrick\source\repos\Inventory Management System\obj\Release\netcoreapp3.1\Inventory Management System.csproj.CoreCompileInputs.cache
+C:\Users\Patrick\source\repos\Inventory Management System\obj\Release\netcoreapp3.1\Inventory Management System.dll
+C:\Users\Patrick\source\repos\Inventory Management System\obj\Release\netcoreapp3.1\Inventory Management System.pdb
+C:\Users\Patrick\source\repos\Inventory Management System\obj\Release\netcoreapp3.1\Inventory Management System.genruntimeconfig.cache
