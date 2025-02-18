@@ -11,10 +11,10 @@ namespace Inventory_Management_System
     {
         static void Main(string[] args)
         {
-            IInventoryManager inventoryManager = new InventoryManager();
-            InventoryManagementSystemView inventoryManagementSystemView = new InventoryManagementSystemView(inventoryManager);
-            ProgramController programController = new ProgramController(inventoryManager, inventoryManagementSystemView);
-            programController.Run();
+            IInventoryManager inventoryManager = new InventoryManager(); // create an instance of manager
+            InventoryManagementSystemView inventoryManagementSystemView = new InventoryManagementSystemView(inventoryManager); // inject manager to view
+            ProgramController programController = new ProgramController(inventoryManagementSystemView); //inject view into controller
+            programController.Run(); //run view
         }
     }
 }

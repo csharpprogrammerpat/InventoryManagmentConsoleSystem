@@ -10,13 +10,11 @@ namespace Inventory_Management_System.Controller
     // Controller class that manages the interaction between the View and the Manager components
     internal class ProgramController
     {
-        private IInventoryManager _inventoryManager; // Interface to handle inventory management logic
         private InventoryManagementSystemView _inventoryManagementSystemView; // View for displaying the user interface
 
         // Constructor that injects dependencies for InventoryManager and View components
-        public ProgramController(IInventoryManager inventoryManager, InventoryManagementSystemView inventoryManagementSystemView)
+        public ProgramController(InventoryManagementSystemView inventoryManagementSystemView)
         {
-            _inventoryManager = inventoryManager; 
             _inventoryManagementSystemView = inventoryManagementSystemView; 
         }
 
