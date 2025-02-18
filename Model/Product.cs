@@ -10,8 +10,6 @@ namespace Inventory_Management_System.Model
 {
     public class Product
     {
-        private int quantity;
-
         public int ProductId { get; set; }
         public string Name { get; set; }
         public int QuantityInStock { get; set; }

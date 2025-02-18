@@ -4,6 +4,7 @@ using Inventory_Management_System.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 using static System.Collections.Specialized.BitVector32;
 
 namespace Inventory_Management_System.Helper
@@ -27,7 +28,7 @@ namespace Inventory_Management_System.Helper
                 Product product = GetProductDetails();
                 if (product == null)
                 {
-                    Console.WriteLine("Failed to add product.");
+                    Console.WriteLine("Failed to add product. Invalid Input Or Cancelled");
                     return; // Stop the process and return to the main menu
                 }
                 Console.WriteLine("");
@@ -43,19 +44,19 @@ namespace Inventory_Management_System.Helper
             while (updateAnother)
             {
                 _inventoryManager.ListProducts();
-                Console.WriteLine("Updating a product");
+                Console.WriteLine("Updating a product.");
                 Console.WriteLine("");
                 int productId = GetProductId(); // Get the product ID from the user
                 if (productId < 0)
                 {
-                    Console.WriteLine("invalid input");
+                    Console.WriteLine("invalid input or cancelled.");
                     return;
                 }
                 Console.WriteLine("Enter new quantity: ");
                 int newQuantity = GetQuantity();
                 if (newQuantity < 0)
                 {
-                    Console.WriteLine("invalid input");
+                    Console.WriteLine("invalid input or cancelled.");
                     return;
                 }
                bool result = ContinueUpdate(productId, newQuantity);
@@ -94,12 +95,16 @@ namespace Inventory_Management_System.Helper
             Console.WriteLine("Enter product name (type 'cancel' to exit): ");
             string name = Console.ReadLine();
 
-            if (string.IsNullOrWhiteSpace(name) || name.ToLower() == "cancel") //checks if the inputed value is null or whitespace only or the word cancel
+            if (string.IsNullOrWhiteSpace(name)) //checks if the inputed value is null or whitespace only or the word cancel
+            {
+                Console.WriteLine("invalid name. name is null.");
+                return null; // Return null to indicate cancellation
+            }
+            if (name.ToLower() == "cancel") // Converts name to lowercase and checks if it's "cancel"
             {
                 Console.WriteLine("Product entry canceled.");
                 return null; // Return null to indicate cancellation
             }
-
             double price = GetPrice();
             if (price < 0)
             {
@@ -120,10 +125,15 @@ namespace Inventory_Management_System.Helper
             Console.WriteLine("");
             Console.WriteLine("Enter product Id (or type 'cancel' to exit): ");
             string productId = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(productId) || productId.ToLower() == "cancel") //checks if the inputed value is null or whitespace only or the word cancel
+            if (string.IsNullOrWhiteSpace(productId)) //checks if the inputed value is null or whitespace only or the word cancel
+            {
+                Console.WriteLine("Invalid input. product id is null or blank");
+                return -1; // Return an invalid value (-1) to indicate cancellation or error
+            }
+            if (productId.ToLower() == "cancel") // Converts name to lowercase and checks if it's "cancel"
             {
                 Console.WriteLine("Product entry canceled.");
-                return -1; // Return an invalid value (-1) to indicate cancellation or error
+                return -1; // Return null to indicate cancellation
             }
 
             if (!int.TryParse(productId, out int id)) //cast product ID to int if false returns -1
@@ -141,10 +151,15 @@ namespace Inventory_Management_System.Helper
             Console.WriteLine("");
             Console.WriteLine("Enter product price (or type 'cancel' to exit): ");
             string priceInput = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(priceInput) || priceInput.ToLower() == "cancel") //checks if the inputed value is null or whitespace only or the word cancel
+            if (string.IsNullOrWhiteSpace(priceInput)) //checks if the inputed value is null or whitespace only or the word cancel
+            {
+                Console.WriteLine("Invalid Input. price input is null or blank");
+                return -1; // Return an invalid value (-1) to indicate cancellation or error
+            }
+            if (priceInput.ToLower() == "cancel") // Converts name to lowercase and checks if it's "cancel"
             {
                 Console.WriteLine("Product entry canceled.");
-                return -1; // Return an invalid value (-1) to indicate cancellation or error
+                return -1; // Return null to indicate cancellation
             }
 
             if (!double.TryParse(priceInput, out double price)) //cast priceInput to double if false returns -1
@@ -161,12 +176,16 @@ namespace Inventory_Management_System.Helper
             Console.WriteLine("");
             Console.WriteLine("Enter product quantity (or type 'cancel' to exit): ");
             string quantityInput = Console.ReadLine();
-            if (string.IsNullOrWhiteSpace(quantityInput) || quantityInput.ToLower() == "cancel") //checks if the inputed value is null or whitespace only or the word cancel
+            if (string.IsNullOrWhiteSpace(quantityInput)) //checks if the inputed value is null or whitespace only or the word cancel
+            {
+                Console.WriteLine("Invalid Quantity, quanitity is null or blank.");
+                return -1; // Return an invalid value (-1) to indicate cancellation or error
+            }
+            if (quantityInput.ToLower() == "cancel")
             {
                 Console.WriteLine("Product entry canceled.");
                 return -1; // Return an invalid value (-1) to indicate cancellation or error
             }
-
             if (!int.TryParse(quantityInput, out int quantity))
             {
                 Console.WriteLine("Invalid quantity. Operation canceled.");
@@ -191,7 +210,7 @@ namespace Inventory_Management_System.Helper
                 int productId = GetProductId();
                 if (productId < 0)
                 {
-                    Console.WriteLine("invalid input");
+                    Console.WriteLine("invalid input or cancelled.");
                     return;
                 }
                 bool result = ContinueDeletion(productId);
